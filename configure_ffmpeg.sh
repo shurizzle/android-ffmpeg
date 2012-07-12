@@ -16,31 +16,44 @@ pushd ffmpeg
 #--disable-parsers \
 #--disable-filters \
 #--disable-protocols \
+##--enable-yasm \
+##--enable-small \
+##--enable-hwaccels \
+##--enable-small \
+##--cpu=cortex-a8 \
+##--enable-runtime-cpudetect \
+##--enable-libfaac \
+##--enable-nonfree
+##--extra-cflags="-I../x264 -I../faac/include" \
+##--extra-ldflags="-L../x264 -L../faac/libfaac/.libs" \
 
 ./configure \
 $DEBUG_FLAG \
 --enable-cross-compile \
 --arch=arm \
---cpu=cortex-a8 \
+--enable-hwaccels \
 --target-os=linux \
---enable-runtime-cpudetect \
 --prefix=/data/data/org.witness.sscvideoproto \
 --enable-pic \
 --disable-shared \
 --enable-static \
---enable-small \
 --cross-prefix=$NDK_TOOLCHAIN_BASE/bin/arm-linux-androideabi- \
 --sysroot="$NDK_SYSROOT" \
 --enable-version3 \
 --enable-gpl \
 --enable-memalign-hack \
+--disable-yasm \
 --disable-doc \
---enable-yasm \
 \
 --enable-decoder=mjpeg \
 --enable-decoder=rawvideo \
 \
 --enable-encoder=libx264 \
+--enable-encoder=libfaac \
+--enable-decoder=h263 \
+--enable-decoder=mpeg4 \
+--enable-decoder=h264 \
+--enable-parser=h264 \
 \
 --enable-muxer=mp4 \
 \
@@ -48,19 +61,14 @@ $DEBUG_FLAG \
 --enable-demuxer=mjpeg \
 --enable-demuxer=mp4 \
 --enable-demuxer=mov \
-\
+--enable-demuxer=h264 \
 --enable-parser=mjpeg \
-\
 --enable-filter=buffer \
 --enable-filter=buffersink \
 --enable-filter=drawbox \
 --enable-filter=overlay \
 --enable-filter=redact \
-\
 --enable-protocol=file \
-\
---enable-hwaccels \
-\
 --enable-ffmpeg \
 --disable-ffplay \
 --disable-ffprobe \
