@@ -9,6 +9,8 @@ fi
 
 pushd ffmpeg
 
+pwd
+
 #--disable-decoders \
 #--disable-encoders \
 #--disable-muxers \
@@ -16,12 +18,13 @@ pushd ffmpeg
 #--disable-parsers \
 #--disable-filters \
 #--disable-protocols \
+#--cpu=cortex-a8 \
 
 ./configure \
 $DEBUG_FLAG \
 --enable-cross-compile \
 --arch=arm \
---cpu=cortex-a8 \
+--cpu=armv6 \
 --target-os=linux \
 --enable-runtime-cpudetect \
 --prefix=/data/data/org.witness.sscvideoproto \
@@ -36,6 +39,7 @@ $DEBUG_FLAG \
 --enable-memalign-hack \
 --disable-doc \
 --enable-yasm \
+--enable-libmp3lame \
 \
 --enable-decoder=mjpeg \
 --enable-decoder=rawvideo \
@@ -66,10 +70,11 @@ $DEBUG_FLAG \
 --disable-ffprobe \
 --disable-ffserver \
 --disable-network \
+--enable-nonfree \
 --enable-libx264 \
 --enable-zlib \
---extra-cflags="-I../x264" \
---extra-ldflags="-L../x264" \
+--extra-cflags="-I../x264 -I../lame/android/include" \
+--extra-ldflags="-L../x264 -L../lame/android/lib" \
 --disable-avdevice \
 --disable-devices
 

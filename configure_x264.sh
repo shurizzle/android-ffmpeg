@@ -4,7 +4,7 @@ pushd `dirname $0`
 
 pushd x264
 
-./configure --cross-prefix=$NDK_TOOLCHAIN_BASE/bin/arm-linux-androideabi- \
+CFLAGS="-march=armv6" ./configure --cross-prefix=$NDK_TOOLCHAIN_BASE/bin/arm-linux-androideabi- \
 --sysroot="$NDK_SYSROOT" \
 --host=arm-linux \
 --enable-pic \

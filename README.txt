@@ -15,8 +15,7 @@ building
 --------
 
 cd android-ffmpeg
-git submodule init
-git submodule update
+./setup.sh
 NDK_BASE=/path/to/android-ndk ./configure_make_everything.sh
 
 That should give you command line binary ffmpeg/ffmpeg, which is the only file
