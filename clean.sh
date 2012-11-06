@@ -16,3 +16,5 @@ popd
 pushd ffmpeg
 make clean
 popd
+
+rm -rf ffmpeg ffmpeg-bin lame

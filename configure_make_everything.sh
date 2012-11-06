@@ -11,4 +11,4 @@ function die {
 ./make_lame.sh || die "lame make"
 ./configure_ffmpeg.sh || die "FFMPEG configure"
 ./make_ffmpeg.sh || die "FFMPEG make"
-cp ffmpeg/ffmpeg .
+cp ffmpeg/ffmpeg ffmpeg-bin
